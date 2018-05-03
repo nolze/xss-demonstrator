@@ -1,0 +1,21 @@
+{
+  "name": "xss-demonstrator",
+  "productName": "XSS Demonstrator",
+  "version": "0.1.0",
+  "description": "A simple listener for demonstrating XSS attacks",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/nolze/xss-demonstrator",
+  "keywords": [],
+  "author": "nolze",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.8.4"
+  },
+  "dependencies": {},
+  "build": {
+    "appId": "com.electron.xss-demonstrator"
+  }
+}
